@@ -32,7 +32,11 @@ class ArticleIndex:
         return [self.dataset_articles[i] for i in results_sort]
 
 indexer = ArticleIndex()
-articles_found = indexer.search_articles("Data Science")
+query_input = input("Write query prompt: ")
+articles_found = indexer.search_articles(query_input)
+
+for x in articles_found:
+    print(x)
 
 
 
