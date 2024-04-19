@@ -8,7 +8,7 @@ class ArticleIndex:
     ArticleIndex class is a representation of indexing mechanism for datasets
     """
 
-    def __init__(self, results, csv_path):
+    def __init__(self, results: int, csv_path: str):
         """
         Initialization of ArticleIndex
         :param results: int
@@ -20,7 +20,7 @@ class ArticleIndex:
         self.dataset_articles = self.load_dataset()
         self.trained_model = self.fit_vector(self.dataset_articles)
 
-    def load_dataset(self):
+    def load_dataset(self) -> list[str]:
         """
         Get all articles of dataset
 
@@ -30,7 +30,7 @@ class ArticleIndex:
         articles_data = dataset_data['Title'] + "\n\n" + dataset_data['Text']
         return articles_data.tolist()
 
-    def fit_vector(self, dataset_articles):
+    def fit_vector(self, dataset_articles: list[str]):
         """
         Fitting and transforming vectorizer into numeric representation for analysis purpose
 
@@ -40,7 +40,7 @@ class ArticleIndex:
         trained_vector = self.vectorizer.fit_transform(dataset_articles)
         return trained_vector
 
-    def search_articles(self, document_query):
+    def search_articles(self, document_query: str) -> list[str]:
         """
         Search for "n" articles based on query and article text similarity
 

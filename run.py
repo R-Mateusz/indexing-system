@@ -46,7 +46,7 @@ def main():
                                     print(fragment + "\n")
 
 
-def get_path_of_dataset(dataset_name):
+def get_path_of_dataset(dataset_name: str) -> str:
     """
     Get name of dataset and returns path to it
 

@@ -1,22 +1,22 @@
 from transformers import BartTokenizer, BartForConditionalGeneration
-
+from .IndexingModel import ArticleIndex
 
 class ArticleRetriever:
     """
     ArticleRetriever class is responsible for retrieving relevant fragments of every articles that were searched
     """
 
-    def __init__(self, articles_index):
+    def __init__(self, articles_index: ArticleIndex):
         """
         Initialization for ArticleRetriever instance
 
-        :param articles_index: ArticleIndexer
+        :param articles_index: ArticleIndex
         """
         self.articles_index = articles_index
         self.tokenizer = BartTokenizer.from_pretrained("facebook/bart-base")
         self.model = BartForConditionalGeneration.from_pretrained("facebook/bart-base")
 
-    def retrieve_fragments(self, query: str, fragment_copy=1, max_length=600, min_length=50):
+    def retrieve_fragments(self, query: str, fragment_copy=1, max_length=600, min_length=50) ->list[str]:
         """
         Retrieve fragments from articles
 
